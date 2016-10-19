@@ -13,6 +13,7 @@ module.exports = Class.extend({
       this._opts = opts;
 
       this.hooks = {
+         'offline:start:init': this.writeEnvironmentFile.bind(this),
          'before:deploy:function:deploy': this.writeEnvironmentFile.bind(this),
          'after:deploy:function:deploy': this.deleteEnvironmentFile.bind(this),
          'before:deploy:createDeploymentArtifacts': this.writeEnvironmentFile.bind(this),
